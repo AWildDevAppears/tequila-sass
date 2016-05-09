@@ -27,6 +27,17 @@ The third and final parameter is the angle at which you want the slant to go.
 This feature was taken from
 [here](https://viget.com/inspire/angled-edges-with-css-masks-and-transforms)
 
+### Arrow
+```
+.class-name {
+    @include arrow(up, 10px, red)
+}
+```
+
+This mixin is used to draw arrows on blocks, and takes the parameters: the direction:
+which way you want the arrow to point (up, down, left or right); the size:
+how big you want the arrow to be and the color that you want the arrow to be.
+
 ### Utilities
 
 #### Ghost vertical align
