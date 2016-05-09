@@ -1,0 +1,45 @@
+/////
+/// @name arrow
+/// @author WoJBurgess@github.com
+/// @access public
+//// ===
+/// @param {string} direction - which way the arrow should point
+/// @param {px} size - the size of the arrow
+/// @param {color} color - what color the arrow should be
+/// ============================================================================
+/// Description
+/// - Draw an arrow at the given position on a block
+/// ============================================================================
+////
+ @mixin arrow($direction, $size: 6px, $color: $arrow-default-color) {
+    content: '';
+    display: block;
+    height: 0;
+    position: absolute;
+    width: 0;
+
+    @if ($direction == 'up') {
+
+        border-bottom: $size solid $color;
+        border-left: 1 / 2 * $size solid transparent;
+        border-right: 1 / 2 * $size solid transparent;
+
+    } @else if ($direction == 'down') {
+
+        border-left: (1 / 2 * $size) solid transparent;
+        border-right: (1 / 2 * $size) solid transparent;
+        border-top: $size solid $color;
+
+    } @else if ($direction == 'left') {
+
+        border-bottom: (1 / 2 * $size) solid transparent;
+        border-right: $size solid $color;
+        border-top: (1 / 2 * $size) solid transparent;
+
+    } @else if ($direction == 'right') {
+
+        border-bottom: (1 / 2 * $size) solid transparent;
+        border-left: $size solid $color;
+        border-top: (1 / 2 * $size) solid transparent;
+    }
+}

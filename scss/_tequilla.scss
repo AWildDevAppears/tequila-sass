@@ -1,10 +1,15 @@
+// Variables
+@import 'mixins/variables.priv',
+        'mixins/variables.pub';
+
 // Handlers
 @import 'mixins/error.handler.mixin';
 
 // Generators
-@import 'mixins/arrow.gen';
+@import 'mixins/arrow.gen.mixin',
+        'mixins/angle.gen.mixin';
 
 // Mixins
-@import 'mixins/util.mixin'
+@import 'mixins/util.mixin';
 
 
