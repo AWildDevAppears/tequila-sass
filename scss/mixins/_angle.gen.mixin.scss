@@ -1,0 +1,90 @@
+/////
+/// @name angle
+/// @author WoJBurgess@github.com
+/// @access public
+/// ===
+/// @param {string} psuedo - before, after or both. The psuedo element to draw the
+/// angle on
+/// @param {bool} flip - whether to draw the angle clockwise or anticlockwise
+/// @param {deg} angle - amount of degrees to set the angle at
+/// ============================================================================
+/// Description
+/// - Stolen from: https://viget.com/inspire/angled-edges-with-css-masks-and-transforms
+/// Draws a diagonal line at the given position at the given angle on the block
+/// this mixin is used on in the color of said block
+/// ============================================================================
+////
+@mixin angle($pseudo, $flip: false, $angle: 1.5deg) {
+    // Possible values for $pseudo are: before, after, both
+    @if $pseudo == 'before' or $pseudo == 'after' or $pseudo == 'both' {
+        position: relative;
+        z-index: 1;
+        $selector: if($pseudo == 'both', '&:before,&::after', '&:#{$pseudo}');
+
+        #{$selector} {
+            -webkit-backface-visibility: hidden; // for Chrome Windows
+            background: inherit;
+            content: '';
+            display: block;
+            height: 50%;
+            left: 0;
+            position: absolute;
+            right: 0;
+            z-index: -1;
+        }
+
+        @if $pseudo == 'before' {
+            #{$selector} {
+                top: 0;
+
+                @if $flip {
+                    transform: skewY($angle * -1);
+                    transform-origin: 0 0;
+                } @else {
+                    transform: skewY($angle);
+                    transform-origin: 100% 0;
+                }
+            }
+        }
+
+        @if $pseudo == 'after' {
+            #{$selector} {
+                bottom: 0;
+
+                @if $flip {
+                    transform: skewY($angle);
+                    transform-origin: 0 100%;
+                } @else {
+                    transform: skewY($angle * -1);
+                    transform-origin: 100%;
+                }
+            }
+        }
+
+        @if $pseudo == 'both' {
+            &:before {
+                top: 0;
+
+                @if $flip {
+                    transform: skewY($angle * -1);
+                    transform-origin: 0 0;
+                } @else {
+                    transform: skewY($angle);
+                    transform-origin: 100% 0;
+                }
+            }
+
+            &:after {
+                bottom: 0;
+
+                @if $flip {
+                    transform: skewY($angle);
+                    transform-origin: 0 0;
+                } @else {
+                    transform: skewY($angle * -1);
+                    transform-origin: 100%;
+                }
+            }
+        }
+    }
+}

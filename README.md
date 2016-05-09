@@ -7,6 +7,25 @@ do it too?
 
 ## Whats under the hood?
 
+### Generators
+
+#### Angle
+```
+.class-name {
+    @include angle(after, false, 1.5deg);
+}
+```
+Angle is a mixin for drawing slanted boxes (because svgs are annoying to maintain).
+It takes 3 parameters, the first is the psuedo selector that the slanted section
+should be placed onto; before, after or both.
+
+The second parameter if whether the angle should be flipped or not, depending on
+which direction you want the slant to go.
+
+The third and final parameter is the angle at which you want the slant to go.
+
+This feature was taken from
+[here](https://viget.com/inspire/angled-edges-with-css-masks-and-transforms)
 
 ### Utilities
 
