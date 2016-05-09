@@ -3,8 +3,6 @@
 If everyone else can name their sass modules after alcoholic beverages, why don't I
 do it too?
 
-
-
 ## Whats under the hood?
 
 ### Generators
@@ -27,16 +25,28 @@ The third and final parameter is the angle at which you want the slant to go.
 This feature was taken from
 [here](https://viget.com/inspire/angled-edges-with-css-masks-and-transforms)
 
-### Arrow
+#### Arrow
 ```
 .class-name {
     @include arrow(up, 10px, red)
 }
 ```
-
 This mixin is used to draw arrows on blocks, and takes the parameters: the direction:
 which way you want the arrow to point (up, down, left or right); the size:
 how big you want the arrow to be and the color that you want the arrow to be.
+
+#### Color set
+```
+@include color-set(btn, $color-map, true)
+```
+Color set is a mixin for generating a set of something e.g. buttons. The first
+argument is what you want to prepend all of your color scheme classes with (for
+buttons it could be btn), the second parameter is a map of all of the different
+colors that this component can be (e.g. ( "primary": red, "secondary": blue) for
+generating "btn-primary" and "btn-secondary classes"). The thrird param is whether
+this block has a hover state, if your component has hover states you will need to
+assign two colors to your map, the first being the neutral state and the second
+being the hover state.
 
 ### Utilities
 

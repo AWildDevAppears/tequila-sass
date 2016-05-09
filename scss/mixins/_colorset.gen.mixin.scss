@@ -1,0 +1,79 @@
+// Generate a series of class modifiers for colors
+$dependent-text-color-light: #fff !default;
+$dependent-text-color-dark:  #000 !default;
+
+
+/////
+/// @name color-set
+/// @author WOJburgess@github.com
+/// @access public
+/// ===
+/// @param {string} pre - what to pre-pend the classes with
+/// @param {string} map - A map of all of the different color schemes
+/// @param {bool} has-hover - specifies whether the map contains hover states as well
+/// ============================================================================
+/// Description
+/// - Pass this mixin a map of all of the different sets of something you want (think btn, btn--primary, btn)
+/// ============================================================================
+////
+@mixin color-set($pre, $map, $has-hover: true) {
+    @each $key, $color in $map {
+        .#{$pre}--#{$key} {
+            @if ($has-hover) {
+                background-color: #{nth($color, 1)};
+                color: set-dependent-color(nth($color, 1));
+
+                &:hover,
+                &:active {
+                    background-color: #{nth($color, 2)};
+                }
+            } @else {
+                background-color: $color;
+                color: set-dependent-color($color);
+            }
+
+            @content;
+        }
+    }
+}
+
+
+/////
+/// @name set-dependent-color
+/// @author WOJburgess@github.com
+/// @access public
+/// @param {color} color
+/// ============================================================================
+/// Description
+/// - Takes a color and works out if dark or light text would look best on it
+/// ============================================================================
+////
+@function set-dependent-color($color) {
+    @return if(lightness($color) > 50,
+        $dependent-text-color-dark,
+        $dependent-text-color-light);
+}
+
+//    Example
+//
+//    $map: (
+//        primary: (red, darken(red, 10%)),
+//        secondary: (blue, darken(blue, 10%))
+//    )
+//
+//
+//    @include color-set(btn, $map);
+//
+//    returns:
+//
+//    .btn--primary {
+//      background-color: #f00;
+//      color: #ffffff; }
+//      .btn--primary:hover, .btn--primary:active {
+//        background-color: #cc0000; }
+//
+//    .btn--secondary {
+//      background-color: #00f;
+//      color: #ffffff; }
+//      .btn--secondary:hover, .btn--secondary:active {
+//        background-color: #0000cc; }
