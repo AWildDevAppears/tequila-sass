@@ -66,3 +66,13 @@ For hiding the text within a container
 ```
 This function is for adding alpha to a color that you only have the hex value
 for.
+
+
+### Other
+
+#### Parse font families
+```
+@include parse-font-families($font-1, $font-2, ...)
+```
+
+Takes infinite font families and makes sure they all have at least one fallback.

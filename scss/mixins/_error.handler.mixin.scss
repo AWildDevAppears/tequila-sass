@@ -1,0 +1,67 @@
+/////
+/// @name throw
+/// @author WoJBurgess@github.com
+/// @access private
+/// ============================================================================
+/// Description
+/// - Throw an error to kill the sass compilation
+/// ============================================================================
+////
+@function -throw($message) {
+  @if feature-exists('at-error') != true {
+    @warn $message;
+  } @else {
+    @error $message;
+  }
+}
+
+
+@mixin -throw($message) {
+    // Make sure sass compilation fails, this function does not return anything
+    // So cannot be truthy or falsy.
+    @if -throw($message) {}
+}
+
+
+/////
+/// @name parse-font-families
+/// @author WoJBurgess@github.com
+/// @access public
+/// @param {array} an array of font families to parse
+/// ============================================================================
+/// Description
+/// - Checks to make sure a font has at least one fallback
+/// ============================================================================
+////
+@mixin parse-font-families($families...) {
+    @each $family in $families {
+         @if (map-get($-tequilla, enforce)) {
+                @include -throw('Please add at least one fallback for this font family, #{$family}');
+            } @else {
+                @warn 'Please add at least one fallback for this font family, #{$family}';
+            }
+    }
+}
+
+
+/////
+/// @name throw
+/// @author WoJBurgess@github.com
+/// @access private
+/// @param {feature} Name of the feature
+/// @param {has-fallback} Flag to state a fallback is within the content tags
+/// ============================================================================
+/// Description
+/// - Checks whether Tequilla is in legacy mode, to stop users using features
+/// that are not supported on older browsers (Definition of legacy is <IE9)
+/// ============================================================================
+////
+@mixin check-legacy($feature: 'this feature', $has-fallback: false) {
+   @if (map-get($-tequilla, legacy)) {
+       @if ($has-fallback) {
+           @content;
+       } @else {
+           @include -throw('Using #{$feature} is not supported in legacy mode');
+       }
+   }
+}
