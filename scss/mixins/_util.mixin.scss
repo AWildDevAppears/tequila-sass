@@ -1,0 +1,93 @@
+/////
+/// @name ghost-vertical-align
+/// @author WoJBurgess@github.com
+/// @access public
+/// ============================================================================
+/// Description
+/// - Used for aligning the unknown to the center of a container
+/// https://css-tricks.com/centering-in-the-unknown/
+/// ============================================================================
+////
+%ghost-vertical-align {
+  &:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    width: .1px;
+  }
+}
+
+
+/////
+/// @name psuedos
+/// @author WoJBurgess@github.com
+/// @access public
+/// ============================================================================
+/// Description
+/// - For applying styles to the hover, focus and active psuedo
+/// selectors at the same time
+/// ============================================================================
+////
+@mixin psuedos() {
+    &:hover,
+    &:focus,
+    &:active {
+        @content;
+    }
+}
+
+/////
+/// @name selection
+/// @author WoJBurgess@github.com
+/// @access public
+/// ============================================================================
+/// Description
+/// - For use when changing the selection style
+/// ============================================================================
+////
+@mixin selection() {
+    ::-moz-selection {
+        @content;
+    }
+
+    ::selection {
+        @content;
+    }
+}
+
+
+/////
+/// @name text-hide
+/// @author WoJBurgess@github.com
+/// @access public
+/// ============================================================================
+/// Description
+/// - Bootstraps text-hide feature
+/// ============================================================================
+////
+@mixin text-hide() {
+    font: "0/0" a;
+    color: transparent;
+    text-shadow: none;
+    background-color: transparent;
+    border: 0;
+}
+
+/////
+/// @name text-hide
+/// @author WoJBurgess@github.com
+/// @access public
+/// ============================================================================
+/// Description
+/// - A very simple mixin for adding alpha to an hex color value
+/// ============================================================================
+////
+@function hex-rgba($hex-color, $opacity: 1) {
+    @return rgba(
+        red($hex-color),
+        green($hex-color),
+        blue($hex-color),
+        $opacity
+    );
+}
