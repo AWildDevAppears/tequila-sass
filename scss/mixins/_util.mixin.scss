@@ -20,7 +20,7 @@
 
 
 /////
-/// @name psuedos
+/// @name pseudos
 /// @author WoJBurgess@github.com
 /// @access public
 /// ============================================================================
@@ -29,7 +29,7 @@
 /// selectors at the same time
 /// ============================================================================
 ////
-@mixin psuedos() {
+@mixin pseudos() {
     &:hover,
     &:focus,
     &:active {

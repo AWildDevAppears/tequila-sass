@@ -14,7 +14,7 @@ do it too?
 }
 ```
 Angle is a mixin for drawing slanted boxes (because svgs are annoying to maintain).
-It takes 3 parameters, the first is the psuedo selector that the slanted section
+It takes 3 parameters, the first is the pseudo selector that the slanted section
 should be placed onto; before, after or both.
 
 The second parameter if whether the angle should be flipped or not, depending on
@@ -43,7 +43,7 @@ Color set is a mixin for generating a set of something e.g. buttons. The first
 argument is what you want to prepend all of your color scheme classes with (for
 buttons it could be btn), the second parameter is a map of all of the different
 colors that this component can be (e.g. ( "primary": red, "secondary": blue) for
-generating "btn-primary" and "btn-secondary classes"). The thrird param is whether
+generating "btn-primary" and "btn-secondary classes"). The third param is whether
 this block has a hover state, if your component has hover states you will need to
 assign two colors to your map, the first being the neutral state and the second
 being the hover state.
@@ -66,13 +66,13 @@ More info can be [found here](https://css-tricks.com/centering-in-the-unknown/)
 ```
 .class-name{
     ...
-    @include psuedos() {
+    @include pseudos() {
         color: red;
         ...
     }
 }
 ```
-For applying styles to the hover, focus and active psuedo selectors at the same time.
+For applying styles to the hover, focus and active pseudo selectors at the same time.
 Styles for these are placed within the curly braces after the parentheses.
 
 
@@ -84,7 +84,7 @@ Styles for these are placed within the curly braces after the parentheses.
     ...
 }
 ```
-For manipulating the visual styling of the `:selection` psuedo element.
+For manipulating the visual styling of the `:selection` pseudo element.
 
 
 #### Text hide
