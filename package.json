@@ -1,0 +1,16 @@
+{
+  "name": "tequila-sass",
+  "version": "1.0.0",
+  "description": "A bunch of sass modules to make things easier",
+  "main": "eyeglass-exports.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WoJBurgess/tequila-sass.git"
+  },
+  "author": "WOJBurgess@github.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WoJBurgess/tequila-sass/issues"
+  },
+  "homepage": "https://github.com/WoJBurgess/tequila-sass#readme"
+}
