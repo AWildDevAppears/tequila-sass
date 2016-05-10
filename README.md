@@ -5,6 +5,24 @@ do it too?
 
 ## Whats under the hood?
 
+### Basic mixins
+
+#### Define type scale
+```
+@include define-type-scale((
+    scale: 1.414,
+    base-size: 1,
+    base-weight: 400,
+    line-height: 1.45
+))
+```
+Requires [math module](https://github.com/sass-eyeglass/eyeglass-math)
+
+Set up font scaling on your webapp using http://type-scale.com/
+If you have a designer, ask them to provide you with a link from this site (if not, grab it yourself) - it should resemble:
+http://type-scale.com/?size=16&scale=1.414&text=CSS%20Architecture%20for%20large-scale&webfont=Libre+Baskerville&font-family=gotham&font-weight=400&font-family-headers=&font-weight-headers=inherit&background-color=white&font-color=%23333
+The options array takes the same parameters as $type-scale, defaults are defined in $type-scale-base;
+
 ### Generators
 
 #### Angle
