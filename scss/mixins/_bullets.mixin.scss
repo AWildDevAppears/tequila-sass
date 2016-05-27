@@ -1,0 +1,74 @@
+$bullet-base-color: #f00;
+
+
+/////
+/// @name bullets
+/// @author WoJBurgess@github.com
+/// @access public
+/// ==
+/// @param {attr | unicode} style [circle, square, arrow] - The shape the bullet points should take on
+/// @param {em} size - What size the bullet points should be
+/// @param {color} color - What color the bullet points should be
+/// ============================================================================
+/// Description
+/// - Custom bullet points for unordered lists
+/// (This is pretty unstable, doesn't work 100% of the time and it can be a little wonky when passed certain sizes)
+/// I will fix this at some point, if you want it fixed faster, submit a PR.
+/// ============================================================================
+////
+@mixin bullets($style: circle, $size: 2em, $color: $bullet-base-color) {
+    list-style: none;
+
+    li {
+        margin-bottom: 10px + (($size / 1em) * 1px);
+
+        @if ($style == circle) {
+            padding-left: 20px + (($size / 1em) * 1px);
+            position: relative;
+
+            &:before {
+                color: $color;
+                content: '• ';
+                font-size: $size;
+                margin-left: -20px - (($size / 1em) * 2px);
+                position: absolute;
+                top: -((($size - 1em ) / 1em) * 10px) - ($size / 1em) * 1px;
+            }
+
+        } @else if ($style == square) {
+            padding-left: (($size / 1em) * 16px) + 5px;
+            position: relative;
+
+            &:before {
+                color: $color;
+                content: '■ ';
+                font-size: $size;
+                margin-left: -(($size / 1em) * 16px);
+                position: absolute;
+                top: -((($size - 1em ) / 1em) * 10px) - (($size / 1em) + 1) * 1px;
+            }
+        } @else if ($style == arrow) {
+             padding-left: 10px;
+
+            &:before {
+                color: $color;
+                content: '4 '; //
+                font-family: 'Webdings';
+                font-size: $size;
+                margin-left: -10px;
+            }
+        } @else {
+            padding-left: 20px;
+            position: relative;
+
+            &:before {
+                color: $color;
+                content: '#{$style} ';
+                font-size: $size;
+                margin-left: -20px;
+                position: absolute;
+                top: -10px;
+            }
+        }
+    }
+}

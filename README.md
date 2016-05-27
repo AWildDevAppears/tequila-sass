@@ -66,6 +66,20 @@ this block has a hover state, if your component has hover states you will need t
 assign two colors to your map, the first being the neutral state and the second
 being the hover state.
 
+### Bullets
+```
+ul {
+    @include bullets(circle, 2em, pink);
+}
+```
+UNSTABLE
+
+Bullets is a mixin to style bullet points, because CSS does not let us style bullet
+points easily. With this mixin you can easily style bullet points, changing their color,
+size and shape simply by changing the three parameters in the mixin.
+
+As I have mentioned, this feature is really unstable and the maths behind it is pretty weird.
+
 ### Utilities
 
 #### Ghost vertical align
