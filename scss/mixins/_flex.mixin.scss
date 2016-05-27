@@ -1,0 +1,376 @@
+/////
+/// @name flexrow
+/// @author WoJBurgess@github.com
+/// @access public
+/// ===
+/// @param {direction} align - a parameter to pass to align-flex-items
+/// ============================================================================
+/// Description
+/// - Creates a flex container for flex items with a gutter
+/// ============================================================================
+////
+@mixin flexrow($align: null) {
+    @include check-legacy('flexbox');
+
+    @include display-flex();
+
+    @if (map-has-key($-full-flex, gutter)) {
+        margin-left: - #{map-get($full-flex, gutter) / 2};
+        margin-right: - #{map-get($full-flex, gutter) / 2};
+    }
+
+    min-width: 100%;
+
+    @if ($align != null) {
+        @include align-flex-items($align);
+    }
+
+}
+
+/////
+/// @name flexcol
+/// @author WoJBurgess@github.com
+/// @access public
+/// ===
+/// @param {number} query - width of this block [can be 1, a percentage or a fraction]
+/// @param {direction} align - a parameter to pass to align-flex-item
+/// ============================================================================
+/// Description
+/// - Creates items to be put inside a flexrow
+/// ============================================================================
+////
+@mixin flexcol($query: 1, $align: null) {
+    @include check-legacy('flexbox');
+
+    @if ($query == 1) {
+        @include flex(1);
+        width: 100%;
+    } @else if (unit($query) == '%') {
+        @include flex(0, 0, $query);
+        max-width: $query;
+    } @else if (unit($query) == '') {
+        // unit is a fraction
+        @include flex(0, 0, (($query) * 100%));
+    } @else {
+        @warn 'flexcol does not support `#{unit($query)}`, value must be a percentage or a fraction';
+    }
+
+    @if map-has-key($-full-flex, gutter) {
+        @if map-has-key($-full-flex, gutterType) {
+            #{map-get($-full-flex, gutterType)}-left: #{map-get($-full-flex, gutter) / 2};
+            #{map-get(-$full-flex, gutterType)}-right: #{map-get($-full-flex, gutter) / 2};
+        } @else {
+            padding-left: #{map-get($-full-flex, gutter) / 2};
+            padding-right: #{map-get($-full-flex, gutter) / 2};
+        }
+    }
+
+    @if ($align != null) {
+        @include align-flex-self($align);
+    }
+}
+
+/////
+/// @name flexcol-at
+/// @author WoJBurgess@github.com
+/// @access public
+/// @require breakpoint
+/// ===
+/// @param {number} query - width of this block [can be 1, a percentage or a fraction]
+/// @param {number} breakpoint - the beakpoint at which to apply these styles
+/// @param {direction} align - a parameter to pass to align-flex-item
+/// @param {bool} no-bp - whether to use breakpoint or not
+/// ============================================================================
+/// Description
+/// - Creates items to be put inside a flexrow at a breakpoint
+/// ============================================================================
+////
+@mixin flexcol-at($query, $breakpoint, $align: null, $no-bp: false) {
+    @include check-legacy('flexbox');
+
+    @if $no-bp == false {
+        @include breakpoint($breakpoint) {
+           @include flexcol($query, $align);
+        }
+    } @else {
+        @media screen and (max-width: $breakpoint) {
+            @include flexcol($query, $align);
+        }
+    }
+}
+
+
+/////
+/// @name display-flex
+/// @author WoJBurgess@github.com
+/// @access public
+/// ============================================================================
+/// Description
+/// - apply display flex parameter with fallbacks
+/// ============================================================================
+////
+@mixin display-flex {
+  @include check-legacy('flexbox');
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/////
+/// @name display-inline-flex
+/// @author WoJBurgess@github.com
+/// @access public
+/// ============================================================================
+/// Description
+/// - apply display inline flex parameter with fallbacks
+/// ============================================================================
+////
+@mixin display-inline-flex {
+  @include check-legacy('flexbox');
+
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -moz-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+/////
+/// @name flex-direction
+/// @author WoJBurgess@github.com
+/// @access public
+/// ===
+/// @param {direction} value - direction for the flex items
+/// ============================================================================
+/// Description
+/// - apply flex-direction parameter with fallbacks
+/// ============================================================================
+////
+@mixin flex-direction($value: row) {
+  @include check-legacy('flexbox');
+
+  @if $value == row-reverse {
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: horizontal;
+  } @else if $value == column {
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+  } @else if $value == column-reverse {
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: vertical;
+  } @else {
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+  }
+  -webkit-flex-direction: $value;
+  -moz-flex-direction: $value;
+  -ms-flex-direction: $value;
+  flex-direction: $value;
+}
+
+/////
+/// @name flex-wrap
+/// @author WoJBurgess@github.com
+/// @access public
+/// ===
+/// @param {wrap} value - attribute to pass to flex-wrap
+/// ============================================================================
+/// Description
+/// - apply flex-wrap parameter with fallbacks
+/// ============================================================================
+////
+@mixin flex-wrap($value: nowrap) {
+  @include check-legacy('flexbox');
+
+  // No Webkit Box fallback.
+  -webkit-flex-wrap: $value;
+  -moz-flex-wrap: $value;
+  @if $value == nowrap {
+      -ms-flex-wrap: none;
+  } @else {
+      -ms-flex-wrap: $value;
+  }
+  flex-wrap: $value;
+}
+
+/////
+/// @name flex
+/// @author WoJBurgess@github.com
+/// @access public
+/// ===
+/// @param {number} fg - flex grow attribute
+/// @param {number} fs - flex shrink attribute
+/// @param {number} fb - flex base attribute
+/// ============================================================================
+/// Description
+/// - apply flex parameter with fallbacks
+/// ============================================================================
+////
+@mixin flex($fg: 1, $fs: null, $fb: null) {
+  @include check-legacy('flexbox');
+
+  -webkit-box-flex: $fg;
+  -webkit-flex: $fg $fs $fb;
+  -moz-box-flex: $fg;
+  -moz-flex: $fg $fs $fb;
+  -ms-flex: $fg $fs $fb;
+  flex: $fg $fs $fb;
+}
+
+/////
+/// @name flex-flow
+/// @author WoJBurgess@github.com
+/// @access public
+/// ===
+/// @param {attributes...} values  - flex flow attributes
+/// ============================================================================
+/// Description
+/// - apply flex flow parameter with fallbacks
+/// ============================================================================
+////
+@mixin flex-flow($values...) {
+  @include check-legacy('flexbox');
+
+  // No Webkit Box fallback.
+  -webkit-flex-flow: $values;
+  -moz-flex-flow: $values;
+  -ms-flex-flow: $values;
+  flex-flow: $values;
+}
+
+/////
+/// @name align-items
+/// @author WoJBurgess@github.com
+/// @access public
+/// ===
+/// @param {align-items} value - attribute to pass to align items
+/// ============================================================================
+/// Description
+/// - Align items parameter with fallbacks
+/// ============================================================================
+////
+@mixin align-items($value: stretch) {
+  @include check-legacy('flexbox');
+
+  @if $value == flex-start {
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+  } @else if $value == flex-end {
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+  } @else {
+    -webkit-box-align: $value;
+    -ms-flex-align: $value;
+  }
+  -webkit-align-items: $value;
+  -moz-align-items: $value;
+  align-items: $value;
+}
+
+/////
+/// @name align-flex-self
+/// @author WoJBurgess@github.com
+/// @access public
+/// ===
+/// @param {align-self} value - attribute to pass to align self
+/// ============================================================================
+/// Description
+/// - Align self parameter with fallbacks
+/// ============================================================================
+////
+@mixin align-flex-self($value: auto) {
+  @include check-legacy('flexbox');
+
+  -webkit-align-self: $value;
+  -moz-align-self: $value;
+  @if $value == flex-start {
+    -ms-flex-item-align: start;
+  } @else if $value == flex-end {
+    -ms-flex-item-align: end;
+  } @else {
+    -ms-flex-item-align: $value;
+  }
+  align-self: $value;
+}
+
+/////
+/// @name align-flex-items
+/// @author WoJBurgess@github.com
+/// @access public
+/// ===
+/// @param {align-content} value - attribute to pass to align content
+/// ============================================================================
+/// Description
+/// - Align content parameter with fallbacks
+/// ============================================================================
+////
+@mixin align-flex-items($value: stretch) {
+  @include check-legacy('flexbox');
+
+  -webkit-align-content: $value;
+  -moz-align-content: $value;
+  @if $value == flex-start {
+    -ms-flex-line-pack: start;
+  } @else if $value == flex-end {
+    -ms-flex-line-pack: end;
+  } @else {
+    -ms-flex-line-pack: $value;
+  }
+  align-content: $value;
+}
+
+/////
+/// @name justify-content
+/// @author WoJBurgess@github.com
+/// @access public
+/// ===
+/// @param {justify-content} value  - attribute to pass to justify content
+/// ============================================================================
+/// Description
+/// - Justify content parameter with fallbacks
+/// ============================================================================
+////
+@mixin justify-content($value: stretch) {
+  @include check-legacy('flexbox');
+
+  @if $value == flex-start {
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+  } @else if $value == flex-end {
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+  } @else if $value == space-between {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+  } @else {
+    -webkit-box-pack: $value;
+    -ms-flex-pack: $value;
+  }
+  -webkit-justify-content: $value;
+  -moz-justify-content: $value;
+  justify-content: $value;
+}
+
+/////
+/// @name flex-order
+/// @author WoJBurgess@github.com
+/// @access public
+/// ===
+/// @param {number} n  - attribute to pass to order
+/// ============================================================================
+/// Description
+/// - Order parameter with fallbacks
+/// ============================================================================
+////
+@mixin flex-order($n) {
+  @include check-legacy('flexbox');
+
+  -webkit-order: $n;
+  -ms-flex-order: $n;
+  order: $n;
+  -webkit-box-ordinal-group: $n;
+}

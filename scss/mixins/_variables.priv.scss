@@ -7,3 +7,14 @@ $-tequilla-base: (
 );
 $tequilla: () !default;
 $-tequilla: map-merge($-tequilla-base, $tequilla);
+
+
+// Flex
+$-full-flex-base: (
+    gutter: 30px,
+    gutterType: 'padding',
+    columns: 12
+);
+$full-flex: () !default;
+
+$-full-flex: map-merge($-full-flex-base, $full-flex);
