@@ -14,7 +14,7 @@ do it too?
     base-size: 1,
     base-weight: 400,
     line-height: 1.45
-))
+));
 ```
 Requires [math module](https://github.com/sass-eyeglass/eyeglass-math)
 
@@ -46,7 +46,7 @@ This feature was taken from
 #### Arrow
 ```
 .class-name {
-    @include arrow(up, 10px, red)
+    @include arrow(up, 10px, red);
 }
 ```
 This mixin is used to draw arrows on blocks, and takes the parameters: the direction:
@@ -55,7 +55,7 @@ how big you want the arrow to be and the color that you want the arrow to be.
 
 #### Color set
 ```
-@include color-set(btn, $color-map, true)
+@include color-set(btn, $color-map, true);
 ```
 Color set is a mixin for generating a set of something e.g. buttons. The first
 argument is what you want to prepend all of your color scheme classes with (for
