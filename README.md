@@ -139,7 +139,7 @@ For hiding the text within a container
 This function is for adding alpha to a color that you only have the hex value
 for.
 
-## Flexbox
+## Flexcol
 
 Instead of rewriting an entire grid system with fixed sizes (bootstrappy col-md-6 kind of stuff)
 I decided to take a freer approach to the grid system in a similar way to susy
@@ -189,7 +189,7 @@ does exactly the same as the second argument for the normal `flexcol` mixin abov
 and is still optional. The final argument is the no breakpoint boolean,
 used for when you do not have the breakpoint library
 
-## Flexcol - in - depth
+## Flexbox: in - depth
 
 The mixins below are for the big features in flexbox
 
@@ -299,7 +299,7 @@ For more information see [this link](https://developer.mozilla.org/en/docs/Web/C
 
 This mixin works a lot like `align-flex` except it acts on a single flex item</p>
 
-For more information see [this link](https://developer.mozilla.org/en/docs/Web/CSS/align-self">this link</a>.</p>
+For more information see [this link](https://developer.mozilla.org/en/docs/Web/CSS/align-self).
 
 
 
