@@ -15,8 +15,8 @@
     @include display-flex();
 
     @if (map-has-key($-full-flex, gutter)) {
-        margin-left: - #{map-get($full-flex, gutter) / 2};
-        margin-right: - #{map-get($full-flex, gutter) / 2};
+        margin-left: - #{map-get($-full-flex, gutter) / 2};
+        margin-right: - #{map-get($-full-flex, gutter) / 2};
     }
 
     min-width: 100%;
@@ -58,10 +58,10 @@
     @if map-has-key($-full-flex, gutter) {
         @if map-has-key($-full-flex, gutterType) {
             #{map-get($-full-flex, gutterType)}-left: #{map-get($-full-flex, gutter) / 2};
-            #{map-get(-$full-flex, gutterType)}-right: #{map-get($-full-flex, gutter) / 2};
+            #{map-get($-full-flex, gutterType)}-right: #{map-get($-full-flex, gutter) / 2};
         } @else {
-            padding-left: #{map-get($-full-flex, gutter) / 2};
-            padding-right: #{map-get($-full-flex, gutter) / 2};
+            padding-left: (map-get($-full-flex, gutter) / 2);
+            padding-right: (map-get($-full-flex, gutter) / 2);
         }
     }
 
