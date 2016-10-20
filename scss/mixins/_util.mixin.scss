@@ -29,11 +29,21 @@
 /// selectors at the same time
 /// ============================================================================
 ////
-@mixin pseudos() {
-    &:hover,
-    &:focus,
-    &:active {
-        @content;
+@mixin pseudos($element: null) {
+    @if ($element !== null) {
+        #{$element} {
+            &:hover,
+            &:focus,
+            &:active {
+                @content;
+            }
+        } 
+    } @else {
+        &:hover,
+        &:focus,
+        &:active {
+            @content;
+        }
     }
 }
 
