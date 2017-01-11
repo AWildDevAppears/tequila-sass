@@ -297,15 +297,111 @@ For more information see [this link](https://developer.mozilla.org/en/docs/Web/C
     @include align-flex-self(3);
 ```
 
-This mixin works a lot like `align-flex` except it acts on a single flex item</p>
+This mixin works a lot like `align-flex` except it acts on a single flex item
 
 For more information see [this link](https://developer.mozilla.org/en/docs/Web/CSS/align-self).
 
 
+## Targeting specific devices
 
-### Other
+These are breakpoints for targeting specific devices, for when you have that one device that won't display something on your
+site correctly. Use these mixins sparingly and don't build your site around them, building a site to work per specific device is
+never a good idea.
 
-#### Parse font families
+### Target iPhone 4
+
+```
+    @include target-iphone-4(landscape);
+```
+
+This mixin allows you to target the iPhone 4 and apply styling directly to your site
+when it is displayed on this specific device. Specifying orientation ('landscape' or 'portrait') narrows your query to that specific
+orientation of device
+
+
+### Target iPhone 5
+
+```
+    @include target-iphone-5(landscape);
+```
+
+This mixin allows you to target the iPhone 5 and apply styling directly to your site
+when it is displayed on this specific device. Specifying orientation ('landscape' or 'portrait') narrows your query to that specific
+orientation of device
+
+### Target iPhone 6
+
+```
+    @include target-iphone-6(landscape);
+```
+
+This mixin allows you to target the iPhone 6 and apply styling directly to your site
+when it is displayed on this specific device. Specifying orientation ('landscape' or 'portrait') narrows your query to that specific
+orientation of device
+
+### Target iPhone 6+
+
+```
+    @include target-iphone-6-plus(landscape);
+```
+
+This mixin allows you to target the iPhone 6+ and apply styling directly to your site
+when it is displayed on this specific device. Specifying orientation ('landscape' or 'portrait') narrows your query to that specific
+orientation of device
+
+### Target Samsung Galaxy S3
+
+```
+    @include target-galaxy-s3(landscape);
+```
+
+This mixin allows you to target the Samsung Galaxy S3 and apply styling directly to your site when it is displayed on this specific device. Specifying orientation ('landscape' or 'portrait') narrows your query to that specific
+orientation of device.
+
+### Target Samsung Galaxy S4
+
+```
+    @include target-galaxy-s4(landscape);
+```
+
+This mixin allows you to target the Samsung Galaxy S4 and apply styling directly to your site when it is displayed on this specific device. Specifying orientation ('landscape' or 'portrait') narrows your query to that specific orientation of device.
+
+### Target Samsung Galaxy S5
+
+```
+    @include target-galaxy-s5(landscape);
+```
+
+This mixin allows you to target the Samsung Galaxy S5 and apply styling directly to your site when it is displayed on this specific device. Specifying orientation ('landscape' or 'portrait') narrows your query to that specific orientation of device. This breakpoint also matches the HTC One.
+
+### Target non retina iPads
+
+```
+    @include target-ipad(landscape);
+```
+
+This mixin allows you to target non-retina iPads, specifically the iPad mini, iPad 1 and iPad 2, and apply styling directly to your site when it is displayed on these specific devices. Specifying orientation ('landscape' or 'portrait') narrows your query to that specific orientation of device.
+
+### Target retina iPads
+
+```
+    @include target-ipad-retina(landscape);
+```
+
+This mixin allows you to target retina iPads, specifically the iPad 3 and iPad 4, and apply styling directly to your site when it is displayed on this specific device. Specifying orientation ('landscape' or 'portrait') narrows your query to that specific orientation of device.
+
+
+### Target Nexus 7
+
+```
+    @include target-nexus-7(landscape);
+```
+
+This mixin allows you to target the Nexus 7 and apply styling directly to your site when it is displayed on this specific device. Specifying orientation ('landscape' or 'portrait') narrows your query to that specific orientation of device.
+
+## Other
+
+### Parse font families
 ```
 @include parse-font-families($font-1, $font-2, ...)
 ```

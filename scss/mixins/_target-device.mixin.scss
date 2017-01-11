@@ -1,0 +1,345 @@
+////
+// Breakpoints taken from https://css-tricks.com/snippets/css/media-queries-for-standard-devices/
+// As the post outlines, you should not use these to base your design around specific devices, only to fix little issues
+// with the way certain devices are displaying your site.
+////
+
+////
+// iPhones
+////
+
+////
+/// @name target-iphone-4()
+/// @author WoJBurgess@github.com
+/// @access public
+/// ===
+/// @param {string} orientation ['none'] - informs the mixin of which orientation of device it should target
+/// ============================================================================
+/// Descrtiption
+/// - This mixin allows you to target the iPhone 4 and apply styling directly to your site
+/// when it is displayed on this specific device. Specifying orientation ('landscape' or 'portrait') narrows your query to that specific
+/// orientation of device
+/// ============================================================================
+////
+@mixin target-iphone-4($orientation: 'none') {
+    @if $orientation == 'none' {
+        @media only screen
+            and (min-device-width: 320px)
+            and (max-device-width: 480px)
+            and (-webkit-min-device-pixel-ratio: 2) {
+                @content;
+            }
+    } @else {
+        @media only screen
+            and (min-device-width: 320px)
+            and (max-device-width: 480px)
+            and (-webkit-min-device-pixel-ratio: 2)
+            and (orientation: $orientation) {
+                @content;
+        }
+    }
+}
+
+////
+/// @name target-iphone-5()
+/// @author WoJBurgess@github.com
+/// @access public
+/// ===
+/// @param {string} orientation ['none'] - informs the mixin of which orientation of device it should target
+/// ============================================================================
+/// Descrtiption
+/// - This mixin allows you to target the iPhone 5 and apply styling directly to your site
+/// when it is displayed on this specific device. Specifying orientation ('landscape' or 'portrait') narrows your query to that specific
+/// orientation of device
+/// ============================================================================
+////
+@mixin target-iphone-5($orientation: 'none') {
+    @if $orientation == 'none' {
+        @media only screen
+            and (min-device-width: 320px)
+            and (max-device-width: 568px)
+            and (-webkit-min-device-pixel-ratio: 2) {
+                @content;
+            }
+    } @else {
+        @media only screen
+            and (min-device-width: 320px)
+            and (max-device-width: 568px)
+            and (-webkit-min-device-pixel-ratio: 2)
+            and (orientation: $orientation) {
+                @content;
+        }
+    }
+}
+
+////
+/// @name target-iphone-6()
+/// @author WoJBurgess@github.com
+/// @access public
+/// ===
+/// @param {string} orientation ['none'] - informs the mixin of which orientation of device it should target
+/// ============================================================================
+/// Descrtiption
+/// - This mixin allows you to target the iPhone 6 and apply styling directly to your site
+/// when it is displayed on this specific device. Specifying orientation ('landscape' or 'portrait') narrows your query to that specific
+/// orientation of device
+/// ============================================================================
+////
+@mixin target-iphone-6($orientation: 'none') {
+    @if $orientation == 'none' {
+        @media only screen
+            and (min-device-width: 375px)
+            and (max-device-width: 667px)
+            and (-webkit-min-device-pixel-ratio: 2) {
+                @content;
+            }
+    } @else {
+        @media only screen
+            and (min-device-width: 375px)
+            and (max-device-width: 667px)
+            and (-webkit-min-device-pixel-ratio: 2)
+            and (orientation: $orientation) {
+                @content;
+        }
+    }
+}
+
+////
+/// @name target-iphone-6-plus()
+/// @author WoJBurgess@github.com
+/// @access public
+/// ===
+/// @param {string} orientation ['none'] - informs the mixin of which orientation of device it should target
+/// ============================================================================
+/// Descrtiption
+/// - This mixin allows you to target the iPhone 6+ and apply styling directly to your site
+/// when it is displayed on this specific device. Specifying orientation ('landscape' or 'portrait') narrows your query to that specific
+/// orientation of device
+/// ============================================================================
+////
+@mixin target-iphone-6-plus($orientation: 'none') {
+    @if $orientation == 'none' {
+        @media only screen
+            and (min-device-width: 414px)
+            and (max-device-width: 736px)
+            and (-webkit-min-device-pixel-ratio: 3) {
+                @content;
+            }
+    } @else {
+        @media only screen
+            and (min-device-width: 414px)
+            and (max-device-width: 736px)
+            and (-webkit-min-device-pixel-ratio: 3)
+            and (orientation: $orientation) {
+                @content;
+        }
+    }
+}
+
+////
+// Samsung Galaxy phones
+////
+
+
+////
+/// @name target-galaxy-s3()
+/// @author WoJBurgess@github.com
+/// @access public
+/// ===
+/// @param {string} orientation ['none'] - informs the mixin of which orientation of device it should target
+/// ============================================================================
+/// Descrtiption
+/// - This mixin allows you to target the Samsung Galaxy S3 and apply styling directly to your site
+/// when it is displayed on this specific device. Specifying orientation ('landscape' or 'portrait') narrows your query to that specific
+/// orientation of device.
+/// ============================================================================
+////
+@mixin target-galaxy-s3($orientation: 'none') {
+    @if $orientation == 'none' {
+        @media only screen
+            and (device-width: 320px)
+            and (device-height: 640px)
+            and (-webkit-min-device-pixel-ratio: 2) {
+                @content;
+            }
+    } @else {
+        @media only screen
+            and (min-device-width: 320px)
+            and (max-device-width: 640px)
+            and (-webkit-min-device-pixel-ratio: 2)
+            and (orientation: $orientation) {
+                @content;
+        }
+    }
+}
+
+////
+/// @name target-galaxy-s4()
+/// @author WoJBurgess@github.com
+/// @access public
+/// ===
+/// @param {string} orientation ['none'] - informs the mixin of which orientation of device it should target
+/// ============================================================================
+/// Descrtiption
+/// - This mixin allows you to target the Samsung Galaxy S4 and apply styling directly to your site
+/// when it is displayed on this specific device. Specifying orientation ('landscape' or 'portrait') narrows your query to that specific
+/// orientation of device.
+/// ============================================================================
+////
+@mixin target-galaxy-s4($orientation: 'none') {
+    @if $orientation == 'none' {
+        @media only screen
+            and (device-width: 320px)
+            and (device-height: 640px)
+            and (-webkit-min-device-pixel-ratio: 3) {
+                @content;
+            }
+    } @else {
+        @media only screen
+            and (min-device-width: 320px)
+            and (max-device-width: 640px)
+            and (-webkit-min-device-pixel-ratio: 3)
+            and (orientation: $orientation) {
+                @content;
+        }
+    }
+}
+
+////
+/// @name target-galaxy-s5()
+/// @author WoJBurgess@github.com
+/// @access public
+/// ===
+/// @param {string} orientation ['none'] - informs the mixin of which orientation of device it should target
+/// ============================================================================
+/// Descrtiption
+/// - This mixin allows you to target the Samsung Galaxy S5 and apply styling directly to your site
+/// when it is displayed on this specific device. Specifying orientation ('landscape' or 'portrait') narrows your query to that specific
+/// orientation of device. This breakpoint also matches the HTC One.
+/// ============================================================================
+////
+@mixin target-galaxy-s5($orientation: 'none') {
+    @if $orientation == 'none' {
+        @media only screen
+            and (device-width: 360px)
+            and (device-height: 640px)
+            and (-webkit-min-device-pixel-ratio: 3) {
+                @content;
+            }
+    } @else {
+        @media only screen
+            and (device-width: 360px)
+            and (device-height: 640px)
+            and (-webkit-min-device-pixel-ratio: 3)
+            and (orientation: $orientation) {
+                @content;
+        }
+    }
+}
+
+////
+// iPads
+////
+
+////
+/// @name target-ipad()
+/// @author WoJBurgess@github.com
+/// @access public
+/// ===
+/// @param {string} orientation ['none'] - informs the mixin of which orientation of device it should target
+/// ============================================================================
+/// Descrtiption
+/// - This mixin allows you to target non-retina iPads, specifically the iPad mini, iPad 1 and iPad 2, and apply styling directly to your site
+/// when it is displayed on this specific device. Specifying orientation ('landscape' or 'portrait') narrows your query to that specific
+/// orientation of device.
+/// ============================================================================
+////
+@mixin target-ipad($orientation: 'none') {
+    @if $orientation == 'none' {
+        @media only screen
+            and (min-device-width: 768px)
+            and (max-device-width: 1024px)
+            and (-webkit-min-device-pixel-ratio: 1) {
+                @content;
+            }
+    } @else {
+        @media only screen
+            and (min-device-width: 768px)
+            and (max-device-width: 1024px)
+            and (-webkit-min-device-pixel-ratio: 1)
+            and (orientation: $orientation) {
+                @content;
+        }
+    }
+}
+
+////
+/// @name target-ipad-retina()
+/// @author WoJBurgess@github.com
+/// @access public
+/// ===
+/// @param {string} orientation ['none'] - informs the mixin of which orientation of device it should target
+/// ============================================================================
+/// Descrtiption
+/// - This mixin allows you to target retina iPads, specifically the iPad 3 and iPad 4, and apply styling directly to your site
+/// when it is displayed on this specific device. Specifying orientation ('landscape' or 'portrait') narrows your query to that specific
+/// orientation of device.
+/// ============================================================================
+////
+@mixin target-ipad-retina($orientation: 'none') {
+    @if $orientation == 'none' {
+        @media only screen
+            and (min-device-width: 768px)
+            and (max-device-width: 1024px)
+            and (-webkit-min-device-pixel-ratio: 2) {
+                @content;
+            }
+    } @else {
+        @media only screen
+            and (min-device-width: 768px)
+            and (max-device-width: 1024px)
+            and (-webkit-min-device-pixel-ratio: 2)
+            and (orientation: $orientation) {
+                @content;
+        }
+    }
+}
+
+////
+// Nexus
+////
+
+
+////
+/// @name target-nexus-7()
+/// @author WoJBurgess@github.com
+/// @access public
+/// ===
+/// @param {string} orientation ['none'] - informs the mixin of which orientation of device it should target
+/// ============================================================================
+/// Descrtiption
+/// - This mixin allows you to target the Nexus 7 and apply styling directly to your site
+/// when it is displayed on this specific device. Specifying orientation ('landscape' or 'portrait') narrows your query to that specific
+/// orientation of device.
+/// ============================================================================
+////
+@mixin target-nexus-7($orientation: 'none') {
+    @if $orientation == 'none' {
+        @media only screen
+            and (device-width: 601px)
+            and (device-height: 906px)
+            and (-webkit-min-device-pixel-ratio: 1.331)
+            and (-webkit-max-device-pixel-ratio: 1.332) {
+                @content;
+        }
+    } @else {
+        @media only screen
+            and (device-width: 601px)
+            and (device-height: 906px)
+            and (-webkit-min-device-pixel-ratio: 1.331)
+            and (-webkit-max-device-pixel-ratio: 1.332)
+            and (orientation: $orientation) {
+                @content;
+        }
+    }
+}
