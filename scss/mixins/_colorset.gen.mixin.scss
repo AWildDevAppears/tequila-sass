@@ -21,11 +21,13 @@ $dependent-text-color-dark:  #000 !default;
         .#{$pre}--#{$key} {
             @if ($has-hover) {
                 background-color: #{nth($color, 1)};
-                color: set-dependent-color(nth($color, 1));
+                color: set-dependent-color(nth($color, 2));
 
                 &:hover,
-                &:active {
+                &:active,
+                &:focus {
                     background-color: #{nth($color, 2)};
+                    color: set-dependent-color(nth($color, 2));
                 }
             } @else {
                 background-color: $color;
