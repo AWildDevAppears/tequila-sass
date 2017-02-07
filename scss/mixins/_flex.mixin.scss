@@ -51,6 +51,7 @@
     } @else if (unit($query) == '') {
         // unit is a fraction
         @include flex(0, 0, (($query) * 100%));
+        max-width: (($query) * 100%);
     } @else {
         @warn 'flexcol does not support `#{unit($query)}`, value must be a percentage or a fraction';
     }
@@ -88,7 +89,7 @@
 @mixin flexcol-at($query, $breakpoint, $align: null, $no-bp: false) {
     @include check-legacy('flexbox');
 
-    @if $no-bp == false {
+    @if function-exists(breakpoint) && $no-bp == false {
         @include breakpoint($breakpoint) {
            @include flexcol($query, $align);
         }
