@@ -3,6 +3,10 @@
 If everyone else can name their sass modules after alcoholic beverages, why don't I
 do it too?
 
+The aim of Tequila is to be a 0 weight framework, meaning that if you import it and don't use it,
+it won't add any bloat to your compiled CSS files. Tequila is built to complement tools like Thoughtboxes Bourbon mixins and Breakpoint,
+but has no dependency on these whatsoever (unless documented otherwise).
+
 ## Whats under the hood?
 
 ### Basic mixins
@@ -17,6 +21,7 @@ do it too?
 ));
 ```
 Requires [math module](https://github.com/sass-eyeglass/eyeglass-math)
+The eyeglass math module can replaced with anything else that defines pow() like Compass;
 
 Set up font scaling on your webapp using http://type-scale.com/
 If you have a designer, ask them to provide you with a link from this site (if not, grab it yourself) - it should resemble:
