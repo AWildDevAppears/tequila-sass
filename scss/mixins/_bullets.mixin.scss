@@ -17,57 +17,55 @@ $bullet-base-color: #f00;
 /// ============================================================================
 ////
 @mixin bullets($style: circle, $size: 2em, $color: $bullet-base-color) {
+    @warn "This feature is unstable and should be used with caution";
     list-style: none;
 
     li {
-        margin-bottom: 10px + (($size / 1em) * 1px);
+        position: relative;
+        margin-left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+
+        @if ($style == arrow) {
+          padding: ($size / 4) 0 ($size / 4) $size;
+        } @else if ($style == square) {
+          padding: ($size / 4) 0 ($size / 4) ($size - ($size / 4));
+        } @else {
+          padding: ($size / 4) 0 ($size / 4) ($size / 2);
+        }
+
+        &:before {
+            color: $color;
+            font-size: $size;
+            letter-spacing: .5em;
+            padding-right: 5px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+        }
 
         @if ($style == circle) {
-            padding-left: 20px + (($size / 1em) * 1px);
-            position: relative;
-
             &:before {
-                color: $color;
                 content: '• ';
-                font-size: $size;
-                margin-left: -20px - (($size / 1em) * 2px);
-                position: absolute;
-                top: -((($size - 1em ) / 1em) * 10px) - ($size / 1em) * 1px;
             }
-
         } @else if ($style == square) {
-            padding-left: (($size / 1em) * 16px) + 5px;
-            position: relative;
 
             &:before {
-                color: $color;
                 content: '■ ';
-                font-size: $size;
-                margin-left: -(($size / 1em) * 16px);
-                position: absolute;
-                top: -((($size - 1em ) / 1em) * 10px) - (($size / 1em) + 1) * 1px;
             }
         } @else if ($style == arrow) {
-             padding-left: 10px;
 
             &:before {
-                color: $color;
                 content: '4 '; //
                 font-family: 'Webdings';
-                font-size: $size;
-                margin-left: -10px;
             }
         } @else {
-            padding-left: 20px;
-            position: relative;
 
             &:before {
                 color: $color;
                 content: '#{$style} ';
                 font-size: $size;
-                margin-left: -20px;
-                position: absolute;
-                top: -10px;
             }
         }
     }
