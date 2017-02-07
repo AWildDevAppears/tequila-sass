@@ -3,7 +3,8 @@ $type-scale-base: (
     scale: 1.414,
     base-size: 1,
     base-weight: 400,
-    line-height: 1.45
+    line-height: 1.45,
+    rem: true,
 );
 
 $-type-scale: map-merge($type-scale-base, $type-scale);
@@ -25,17 +26,17 @@ $-type-scale: map-merge($type-scale-base, $type-scale);
 ////
 @mixin define-type-scale($options: ()) {
     $-options: map-merge($-type-scale, $options);
+    $-multiplier: if(map-get($-options, rem), 1rem, 1em);
 
     html {
-        font-size: map-get($-options, base-size) * 1em;
+        font-size: map-get($-options, base-size) * $-multiplier;
     }
-
     body {
         line-height: map-get($-options, line-height);
     }
 
     p {
-        margin-bottom: 1.3em;
+        margin-bottom: 1.3 * $-multiplier;
     }
 
     h1,
@@ -44,32 +45,32 @@ $-type-scale: map-merge($type-scale-base, $type-scale);
     h4 {
         font-weight: inherit;
         line-height: 1.2;
-        margin: 1.414em 0 .5em;
+        margin: (1.414 * $-multiplier) 0 (.5 * $-multiplier);
     }
 
     h1 {
-        font-size: pow(map-get($-options, scale), 4) * 1em;
+        font-size: pow(map-get($-options, scale), 4) * $-multiplier;
         margin-top: 0;
     }
 
     h2 {
-        font-size: pow(map-get($-options, scale), 3) * 1em;
+        font-size: pow(map-get($-options, scale), 3) * $-multiplier;
     }
 
     h3 {
-        font-size: pow(map-get($-options, scale), 2) * 1em;
+        font-size: pow(map-get($-options, scale), 2) * $-multiplier;
     }
 
     h4 {
-        font-size: map-get($-options, scale) * 1em;
+        font-size: #{map-get($-options, scale) * $-multiplier};
     }
 
     h5 {
-        font-size: map-get($-options, base-size) * 1em;
+        font-size: map-get($-options, base-size) * $-multiplier;
     }
 
     small,
     .font--sm {
-        font-size: pow(map-get($-options, scale), -1) * 1em;
+        font-size: pow(map-get($-options, scale), -1) * $-multiplier;
     }
 }
