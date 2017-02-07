@@ -18,6 +18,23 @@
   }
 }
 
+/////
+/// @name sr-only
+/// @author WoJBurgess@github.com
+/// @access public
+/// ============================================================================
+/// Description
+/// - Used for limiting the display of content to screen readers only
+/// ============================================================================
+////
+%sr-only {
+    height: 1px;
+    left: -10000px;
+    overflow: hidden;
+    position: absolute;
+    top: auto;
+    width: 1px;
+}
 
 /////
 /// @name pseudos
@@ -37,7 +54,7 @@
             &:active {
                 @content;
             }
-        } 
+        }
     } @else {
         &:hover,
         &:focus,
