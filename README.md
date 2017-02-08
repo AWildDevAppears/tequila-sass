@@ -17,11 +17,12 @@ but has no dependency on these whatsoever (unless documented otherwise).
     scale: 1.414,
     base-size: 1,
     base-weight: 400,
-    line-height: 1.45
+    line-height: 1.45,
+    rem: true,
 ));
 ```
-Requires [math module](https://github.com/sass-eyeglass/eyeglass-math)
-The eyeglass math module can replaced with anything else that defines pow() like Compass;
+Can be used with or without [math module](https://github.com/sass-eyeglass/eyeglass-math)
+or anything else that defines pow() like Compass.
 
 Set up font scaling on your webapp using http://type-scale.com/
 If you have a designer, ask them to provide you with a link from this site (if not, grab it yourself) - it should resemble:

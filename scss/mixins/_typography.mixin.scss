@@ -31,7 +31,6 @@ $-type-scale: map-merge($type-scale-base, $type-scale);
 /// @name define-type-scale()
 /// @author WoJBurgess@github.com
 /// @access public
-/// @require math
 /// ===
 /// @param {map} options [()] - overrides for the preset type-scale
 /// ============================================================================
