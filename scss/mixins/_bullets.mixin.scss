@@ -1,5 +1,5 @@
-$bullet-base-color: #f00;
-
+$bullet-base-color: #f00 !default;
+$bullet-base-size: 2em !default;
 
 /////
 /// @name bullets
@@ -16,7 +16,7 @@ $bullet-base-color: #f00;
 /// I will fix this at some point, if you want it fixed faster, submit a PR.
 /// ============================================================================
 ////
-@mixin bullets($style: circle, $size: 2em, $color: $bullet-base-color) {
+@mixin bullets($style: circle, $size: $bullet-base-size, $color: $bullet-base-color) {
     @warn "This feature is unstable and should be used with caution";
     list-style: none;
 
