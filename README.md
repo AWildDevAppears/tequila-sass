@@ -87,17 +87,6 @@ As I have mentioned, this feature is really unstable and the maths behind it is 
 
 ### Utilities
 
-#### Ghost vertical align
-```
-.class-name {
-    @extend ghost-vertical-align;
-    ...
-}
-```
-Used for aligning the unknown to the center of a container.
-More info can be [found here](https://css-tricks.com/centering-in-the-unknown/)
-
-
 #### Psuedos
 
 ```

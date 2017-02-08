@@ -1,24 +1,4 @@
 /////
-/// @name ghost-vertical-align
-/// @author WoJBurgess@github.com
-/// @access public
-/// ============================================================================
-/// Description
-/// - Used for aligning the unknown to the center of a container
-/// https://css-tricks.com/centering-in-the-unknown/
-/// ============================================================================
-////
-%ghost-vertical-align {
-  &:before {
-    content: '';
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
-    width: .1px;
-  }
-}
-
-/////
 /// @name sr-only
 /// @author WoJBurgess@github.com
 /// @access public
