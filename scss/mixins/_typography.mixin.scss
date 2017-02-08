@@ -87,6 +87,7 @@ $-type-scale: map-merge($type-scale-base, $type-scale);
         font-size: map-get($-options, base-size) * $-multiplier;
     }
 
+    h6,
     small,
     .font--sm {
         font-size: pow(map-get($-options, scale), -1) * $-multiplier;
