@@ -27,11 +27,11 @@ $bullet-base-size: 2em !default;
         transform: translateY(-50%);
 
         @if ($style == arrow) {
-          padding: ($size / 4) 0 ($size / 4) $size;
+            padding: ($size / 4) 0 ($size / 4) $size;
         } @else if ($style == square) {
-          padding: ($size / 4) 0 ($size / 4) ($size - ($size / 4));
+            padding: ($size / 4) 0 ($size / 4) ($size - ($size / 4));
         } @else {
-          padding: ($size / 4) 0 ($size / 4) ($size / 2);
+            padding: ($size / 4) 0 ($size / 4) ($size / 2);
         }
 
         &:before {

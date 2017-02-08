@@ -56,11 +56,11 @@
 ////
 @mixin parse-font-families($families...) {
     @each $family in $families {
-         @if (map-get($-tequilla, enforce)) {
-                @include -throw('Please add at least one fallback for this font family, #{$family}');
-            } @else {
-                @warn 'Please add at least one fallback for this font family, #{$family}';
-            }
+        @if (map-get($-tequilla, enforce)) {
+            @include -throw('Please add at least one fallback for this font family, #{$family}');
+        } @else {
+            @warn 'Please add at least one fallback for this font family, #{$family}';
+        }
     }
 }
 

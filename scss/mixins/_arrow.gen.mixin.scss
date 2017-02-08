@@ -19,25 +19,21 @@
     width: 0;
 
     @if ($direction == 'up') {
-
         border-bottom: $size solid $color;
         border-left: 1 / 2 * $size solid transparent;
         border-right: 1 / 2 * $size solid transparent;
 
     } @else if ($direction == 'down') {
-
         border-left: (1 / 2 * $size) solid transparent;
         border-right: (1 / 2 * $size) solid transparent;
         border-top: $size solid $color;
 
     } @else if ($direction == 'left') {
-
         border-bottom: (1 / 2 * $size) solid transparent;
         border-right: $size solid $color;
         border-top: (1 / 2 * $size) solid transparent;
 
     } @else if ($direction == 'right') {
-
         border-bottom: (1 / 2 * $size) solid transparent;
         border-left: $size solid $color;
         border-top: (1 / 2 * $size) solid transparent;
