@@ -3,8 +3,8 @@
 If everyone else can name their sass modules after alcoholic beverages, why don't I
 do it too?
 
-The aim of Tequila is to be a 0 weight framework, meaning that if you import it and don't use it,
-it won't add any bloat to your compiled CSS files. Tequila is built to complement tools like Thoughtboxes Bourbon mixins and Breakpoint,
+The aim of Tequila is to be a 0 weight framework, meaning that if you import it and, if you don't use it,
+it won't add any bloat to your compiled CSS files. Tequila is built to compliment tools like Thoughtboxes Bourbon mixins and Breakpoint,
 but has no dependency on these whatsoever (unless documented otherwise).
 
 ## Whats under the hood?
@@ -84,7 +84,7 @@ Bullets is a mixin to style bullet points, because CSS does not let us style bul
 points easily. With this mixin you can easily style bullet points, changing their color,
 size and shape simply by changing the three parameters in the mixin.
 
-As I have mentioned, this feature is really unstable and the maths behind it is pretty weird.
+It kind of works now, but not 100% reliably.
 
 ### Utilities
 

@@ -27,7 +27,7 @@
 /// ============================================================================
 ////
 @mixin pseudos($element: null) {
-    @if ($element !== null) {
+    @if ($element != null) {
         #{$element} {
             &:hover,
             &:focus,
