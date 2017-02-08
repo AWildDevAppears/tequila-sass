@@ -8,18 +8,40 @@
 /// ============================================================================
 ////
 @function -throw($message) {
-  @if feature-exists('at-error') != true {
-    @warn $message;
-  } @else {
-    @error $message;
-  }
+    @if feature-exists('at-error') != true {
+        @warn $message;
+    } @else {
+        @error $message;
+    }
 }
+
+@mixin -error-to-screen($message) {
+    // Throw an error to the html, hide the website and replace it with an error
+    // message.
+    body {
+        display: none !important;
+    }
+
+    html:before {
+        color: #000;
+        content: '[ERROR] #{$message}';
+        display: block;
+        font-size: 20px;
+    }
+    // Log the error too to make sure any errors prior to this are displayrd too.
+    @warn '#{$message}';
+}
+
 
 
 @mixin -throw($message) {
     // Make sure sass compilation fails, this function does not return anything
     // So cannot be truthy or falsy.
-    @if -throw($message) {}
+    @if(map-get($-tequila, errorToScreen)) {
+        @include -error-to-screen($message);
+    } @else {
+        @if -throw($message) {}
+    }
 }
 
 /////

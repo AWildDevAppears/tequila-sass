@@ -3,7 +3,8 @@
 // Tequilla -
 $-tequilla-base: (
     legacy: false,
-    enforce: false
+    enforce: false,
+    errorToScreen: false,
 );
 $tequilla: () !default;
 $-tequilla: map-merge($-tequilla-base, $tequilla);
