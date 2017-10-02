@@ -9,22 +9,18 @@ $type-scale-base: (
 
 $-type-scale: map-merge($type-scale-base, $type-scale);
 
-// If we have no better way of getting the power of our values,
-// use this function as a replacement.
-@if (not function-exists(pow)) {
-    @function pow($number, $exponent) {
-        $value: 1;
-        @if $exponent > 0 {
-            @for $i from 1 through $exponent {
-                $value: $value * $number;
-            }
-        } @else {
-            @for $i from 1 through ($exponent * 1)  {
-                $value: $value * $number;
-            }
+@function pow($number, $exponent) {
+    $value: 1;
+    @if $exponent > 0 {
+        @for $i from 1 through $exponent {
+            $value: $value * $number;
         }
-        @return $value;
+    } @else {
+        @for $i from 1 through ($exponent * 1)  {
+            $value: $value * $number;
+        }
     }
+    @return $value;
 }
 
 ////
